@@ -17,7 +17,6 @@ function App(){
   // 자바스크립트 사용시 {} 사용
   return (
     <div>
-      <h1>hello</h1>
       {showing ? <Hello /> : ""}
       <button onClick={onClick}>{showing ? "hide" : "show"}</button>
     </div>
