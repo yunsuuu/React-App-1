@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 
-function Hello(){
-  function byeFun(){
-    console.log("bye");
-  }
-  function hiFun(){
-    console.log("hi"); // 리렌더링 -> 이전 이펙트 클린업(hiFun) -> 새로운 이펙트 실행(byeFun)
-    return byeFun; // 컴포넌트가 파괴될 때 코드를 실행하고 싶으면 return 함수로 만들어주면 됨 
-  }
-  useEffect(hiFun, []); // [] - 컴포넌트가 렌더링될 때마다 hiFun() 실행
-  return <h3>Hello!</h3>;
-}
 function App(){
-  const [showing, setShowing] = useState(false);
-  const onClick = () => setShowing((bool) => !bool);
-  // 자바스크립트 사용시 {} 사용
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]); // coins = coin data가 들어오는 배열
+  useEffect(() => { // [] - 아무것도 지켜보지 않음, 1번만 작동
+    fetch("https://api.coinpaprika.com/v1/tickers").then((response) => response.json()).then((json) => {
+      setCoins(json); // json = coins(data)
+      setLoading(false); // coin을 얻었으면 Loading 메시지는 false로 변경
+    });
+  } , []) // json - API로 가지고 온 모든 data
   return (
+    // loading === true이면 Loading... 메시지 아니면 아무것도 보여주지 않음
     <div>
-      {showing ? <Hello /> : ""}
-      <button onClick={onClick}>{showing ? "hide" : "show"}</button>
+      <h2>Project 1</h2>
+      <h3>The Coins! (Total: {coins.length})</h3>
+      { loading ? <strong>Loading...</strong> : 
+        <select>
+          {coins.map((item) => <option>{item.name} ({item.symbol}) : ${item.quotes.USD.price} USD</option>)}
+        </select> 
+      }
     </div>
   );
 }

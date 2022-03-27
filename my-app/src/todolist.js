@@ -5,7 +5,7 @@ function App(){
   const [toDos, setToDos] = useState([]); // 여러개의 toDo를 받는 빈 배열(input창에 입력되는 새로운 value + 그전에 입력된 value)
   const onChange = (e) => setToDo(e.target.value); // input창에 변화가 일어나면 setToDo 함수가 실행
   const onSubmit = (e) => { // form에 submit이 일어나면 발생하는 함수
-    e.preventDefault();
+    e.preventDefault(); 
     if(toDo === ""){
       return; // input창에 아무것도 입력하지 않은 상태에서 엔터 누르면 함수 중단(return 하지 않을 경우, 빈 값의 li가 화면에 출력)
     }
