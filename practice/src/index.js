@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 // import App from './App';
 // import App2 from './App2';s
 // import App from './todolist';
-import App from './MovieApp';
+import MainApp from './Main';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MainApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
