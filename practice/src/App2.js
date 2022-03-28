@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import App2 from "'./App2";
 
 function App2(){
   const [loading, setLoading] = useState(true);

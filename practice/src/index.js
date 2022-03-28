@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './App';
-// import App from './App2';
+// import App2 from './App2';s
 // import App from './todolist';
-import App from './Movie';
-// import App from './Movie';
+import App from './MovieApp';
 
 ReactDOM.render(
   <React.StrictMode>

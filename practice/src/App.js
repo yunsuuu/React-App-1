@@ -2,9 +2,8 @@
 // useEffect - state가 아무리 변해도 코드가 딱 한번만 실행될 수 있도록 보호해줌(불필요한 코드 재실행을 방지)
 // useEffect의 첫번째 argument - 특정 시점에만 실행시키고 싶은 코드, 두번째 argument - react.js가 지켜보는 것(특정변화가 감지되는 부분)
 import { useState, useEffect } from "react";
-import App from "./App";
 
-function App() {
+function App(){
   const [counter, setCounter] = useState(0); // create react app을 사용하기 때문에 React.useState()로 적지 않아도 됨
   const [keyword, setKeyword] = useState("");
   const changeNum = () => setCounter((current) => current + 1);

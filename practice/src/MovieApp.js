@@ -1,8 +1,8 @@
 // async, await - 비동기 코드를 쓸 때 Promeise를 더 읽기 쉽도록
 import { useEffect, useState } from "react";
-import Movie from "./Movie";
+import Movie from "./components/Movie";
 
-function Movie() {
+function App() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const getMovies = async () => { // then 대신 await로 작성
@@ -23,21 +23,12 @@ function Movie() {
       {loading ?
         <h4>Loading...</h4> :
         <div>
-          {movies.map((movie) =>
-            <div key={movie.id}>
-              <img src={movie.medium_cover_image}></img>
-              <h3>Title: {movie.title}</h3>
-              <p>{movie.summary}</p>
-              <ul>
-                {movie.genres.map((genre => <li key={genre}>{genre}</li>))}
-              </ul>
-              <hr />
-            </div>
-          )}
+          {movies.map((movie) => 
+            <Movie key={movie.id} coverImg={movie.medium_cover_image} title={movie.title} summary={movie.summary} genres={movie.genres} />)};
         </div>
       }
     </div>
   );
 }
 
-export default Movie;
+export default App;
