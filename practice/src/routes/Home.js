@@ -4,12 +4,8 @@ import Movie from "../components/Movie";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-  const getMovies = async () => { // then 대신 await로 작성
-    // const res = await fetch(
-    //   "https://yts.mx/api/v2/list_movies/json?minimum_rating=8.5$sort_by=year"
-    // );
-    // const json = await res.json();
-    const json = await (await (await fetch("https://yts.mx/api/v2/list_movies/json?minimum_rating=8.5$sort_by=year")).json()); // const res, const json 위의 2줄 코드를 1줄로 줄여서 사용 가능(await를 감싸는 또 다른 await가 있음)
+  const getMovies = async () => {
+    const json = await ( await (await fetch(`https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`)).json());
     setMovies(json.data.movies);
     setLoading(false);
   };
