@@ -13,7 +13,7 @@ function Home() {
     setMovies(json.data.movies);
     setLoading(false);
   };
-  useEffect(() => { // 앱 시작할 때 movie API를 딱 한번 불러오고 싶음 
+  useEffect(() => { // 앱 시작할 때 movie API를 딱 한번 불러오고 싶음
     getMovies(); // useEffect를 통해 getMovies() 호출
   }, []);
   return (
@@ -23,7 +23,15 @@ function Home() {
         <h4>Loading...</h4> :
         <div>
           {movies.map((movie) =>
-            <Movie key={movie.id} coverImg={movie.medium_cover_image} title={movie.title} summary={movie.summary} genres={movie.genres} />)};
+            <Movie 
+            key={movie.id} // map()을 사용하면 고유한 key값을 넣어줘야함
+            id={movie.id}
+            coverImg={movie.medium_cover_image} 
+            title={movie.title} 
+            summary={movie.summary} 
+            genres={movie.genres} 
+            />
+          )};
         </div>
       }
     </div>
