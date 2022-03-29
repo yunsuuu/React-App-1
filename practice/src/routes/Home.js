@@ -9,7 +9,7 @@ function Home() {
     //   "https://yts.mx/api/v2/list_movies/json?minimum_rating=8.5$sort_by=year"
     // );
     // const json = await res.json();
-    const json = await (await (await fetch("https://yts.mx/api/v2/list_movies/json?minimum_rating=9.5$sort_by=year")).json()); // const res, const json 위의 2줄 코드를 1줄로 줄여서 사용 가능(await를 감싸는 또 다른 await가 있음)
+    const json = await (await (await fetch("https://yts.mx/api/v2/list_movies/json?minimum_rating=8.5$sort_by=year")).json()); // const res, const json 위의 2줄 코드를 1줄로 줄여서 사용 가능(await를 감싸는 또 다른 await가 있음)
     setMovies(json.data.movies);
     setLoading(false);
   };
